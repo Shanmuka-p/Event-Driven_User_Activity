@@ -1,0 +1,14 @@
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# Maven
+target/
+*.jar
+
+# Environments
+.env
+
+# OS
+.DS_Store
