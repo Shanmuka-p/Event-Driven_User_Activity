@@ -112,8 +112,7 @@ docker-compose logs -f <service_name>  # e.g., producer-service
             "timestamp": "2026-03-20T21:00:00Z",
             "metadata": {"cart_value": 150}
           }'
- 
-  ```
+     ```
 
 - **Success Response**:
   - **Code**: `202 Accepted`
