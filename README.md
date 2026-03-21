@@ -45,6 +45,8 @@ graph TD
     
     Evaluator -.->|docker exec mvn test| Producer
     Evaluator -.->|docker exec mvn test| Consumer
+ ```   
+
 
 ## Features
 
