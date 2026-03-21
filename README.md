@@ -20,7 +20,31 @@ The system follows a classic event-driven, publish-subscribe pattern:
 
 This asynchronous communication model decouples the services, allowing them to scale independently and making the overall system more resilient to failures.
 
-![Architecture Diagram](https://i.imgur.com/example.png) <!-- Placeholder for an architecture diagram -->
+## System Architecture
+
+```mermaid
+graph TD
+    %% Define Nodes
+    Client([Client / Test Script])
+    Evaluator([Evaluator / Admin])
+    
+    subgraph Docker Compose Network
+        Producer[Producer Service<br/>:9000]
+        Consumer[Consumer Service<br/>:8001]
+        RabbitMQ[(RabbitMQ<br/>:5672)]
+        MySQL[(MySQL Database<br/>:3306)]
+    end
+
+    %% Define Connections
+    Client -->|1. HTTP POST /track| Producer
+    Producer -->|2. AMQP Publish| RabbitMQ
+    Producer -.->|3. 202 Accepted| Client
+    
+    RabbitMQ -->|4. AMQP Consume| Consumer
+    Consumer -->|5. JDBC Insert| MySQL
+    
+    Evaluator -.->|docker exec mvn test| Producer
+    Evaluator -.->|docker exec mvn test| Consumer
 
 ## Features
 
