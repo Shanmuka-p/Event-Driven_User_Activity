@@ -104,7 +104,6 @@ docker-compose logs -f <service_name>  # e.g., producer-service
 
       ```bash
         curl -i -X POST http://localhost:9000/api/v1/events/track \
-
         -H "Content-Type: application/json" \
         -d '{
             "user_id": 999,
